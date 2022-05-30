@@ -211,6 +211,7 @@ def download_panorama_v3(panoid, zoom=5, disp=False):
     # function of download_tiles
     for i, tile in enumerate(tiles):
         x, y, fname, url = tile
+        url = url.replace("http://", "https://") # Fix "Error 403"
         if disp and i % 20 == 0:
             print("Image %d / %d" % (i, len(tiles)))
         if x*tile_width < img_w and y*tile_height < img_h: # tile is valid
